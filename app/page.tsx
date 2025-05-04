@@ -9,8 +9,8 @@ export default function Home() {
       style={{ backgroundImage: "url(/a.jpg)" }}
     >
       <div className="bg-black bg-opacity-50 p-8 rounded-lg text-center">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">ore</h1>
-        <p className="text-xl md:text-2xl">Pro Surfer / Wave Artist</p>
+        <h1 className="text-4xl md:text-6xl font-bold mb-4">I</h1>
+        <p className="text-xl md:text-2xl">Surfer</p>
       </div>
     </main>
   );
