@@ -2,27 +2,51 @@
 
 import { useEffect } from "react";
 import { gsap } from "gsap";
+import Image from "next/image";
 
 export default function Home() {
   useEffect(() => {
-    // GSAPアニメーション
-    gsap.fromTo(
-      ".animated-text",
-      { y: -50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, ease: "power3.out", stagger: 0.2 }
-    );
+    // 文字を1文字ずつアニメーション
+    const textElements = document.querySelectorAll(".animated-text");
+    textElements.forEach((element) => {
+      const text = element.textContent || "";
+      element.innerHTML = text
+        .split("")
+        .map((char) => `<span class="char">${char}</span>`)
+        .join("");
+
+      gsap.fromTo(
+        element.querySelectorAll(".char"),
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          stagger: 0.1,
+        }
+      );
+    });
   }, []);
 
   return (
-    <main
-      className="min-h-screen bg-cover bg-center text-white flex items-center justify-center"
-      style={{ backgroundImage: "url(/a.jpg)" }}
-    >
-      <div className="bg-black bg-opacity-50 p-8 rounded-lg text-center">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4 animated-text">
+    <main className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* 背景画像を next/image で表示 */}
+      <Image
+        src="/a.jpg"
+        alt="Hero background"
+        layout="fill"
+        objectFit="cover"
+        quality={90}
+        priority
+        className="z-0"
+      />
+
+      {/* テキストのみ */}
+      <div className="z-10 p-8 text-center text-white">
+        <h1 className="text-4xl md:text-9xl font-bold mb-4 animated-text">
           ISAMU SUMI
         </h1>
-        <p className="text-xl md:text-2xl animated-text">Surfer</p>
       </div>
     </main>
   );
