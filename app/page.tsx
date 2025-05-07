@@ -31,12 +31,12 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* 背景画像を next/image で表示 */}
+      {/* 背景画像 */}
       <Image
         src="/a.jpg"
         alt="Hero background"
-        layout="fill"
-        objectFit="cover"
+        fill
+        style={{ objectFit: "cover" }}
         quality={90}
         priority
         className="z-0"
@@ -44,7 +44,7 @@ export default function Home() {
 
       {/* テキストのみ */}
       <div className="z-10 p-8 text-center text-white">
-        <h1 className="text-4xl md:text-9xl font-bold mb-4 animated-text">
+        <h1 className="text-6xl md:text-9xl font-bold mb-4 animated-text">
           ISAMU SUMI
         </h1>
       </div>
