@@ -3,6 +3,12 @@
 import { useEffect } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
+import { Roboto } from "next/font/google";
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 export default function Home() {
   useEffect(() => {
@@ -30,58 +36,27 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-gray-100">
-      {/* ヒーローセクション */}
-      <main className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* 背景画像 */}
-        <Image
-          src="/a.jpg"
-          alt="Hero background"
-          fill
-          style={{ objectFit: "cover" }}
-          quality={90}
-          priority
-          className="z-0"
-        />
-
-        {/* テキスト */}
-        <div className="z-10 p-8 text-center text-white">
-          <h1 className="text-6xl md:text-9xl font-bold mb-4 animated-text">
-            ISAMU SUMI
+    <div className="bg-white min-h-screen">
+      <header className="max-w-screen-xl mx-auto px-4">
+        <div className="max-w-screen-xl mx-auto px-4">
+          <h2 className={`${roboto.className} text-4xl md:text-6xl font-light`}>
+            SURFER
+          </h2>
+          <h1 className={`${roboto.className} text-6xl md:text-9xl font-bold`}>
+            SUMI ISAMU
           </h1>
-        </div>
-      </main>
-
-      {/* ボックスセクション */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="col-span-1 bg-white p-6 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold">ボックス1</h2>
-              <p>コンテンツの説明をここに。</p>
-            </div>
-            <div className="col-span-1 bg-white p-6 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold">ボックス2</h2>
-              <p>コンテンツの説明をここに。</p>
-            </div>
-            <div className="col-span-1 bg-white p-6 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold">ボックス3</h2>
-              <p>コンテンツの説明をここに。</p>
-            </div>
-            <div className="col-span-1 bg-white p-6 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold">ボックス4</h2>
-              <p>コンテンツの説明をここに。</p>
-            </div>
+          <div className="relative w-full h-[60vh] mt-4">
+            <Image
+              src="/b.jpg"
+              alt="Wave background"
+              fill
+              quality={90}
+              priority
+              style={{ objectFit: "cover" }}
+            />
           </div>
         </div>
-      </section>
-
-      {/* フッター */}
-      <footer className="w-full bg-gray-800 text-white py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p>© 2025 ISAMU SUMI. All rights reserved.</p>
-        </div>
-      </footer>
+      </header>
     </div>
   );
 }
